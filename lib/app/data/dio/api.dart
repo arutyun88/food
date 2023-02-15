@@ -1,3 +1,3 @@
 const String baseUrl = 'https://goodbaes.github.io';
 
-const String foodPath = 'test-mint.json';
+const String foodPath = '/test-mint.json';
