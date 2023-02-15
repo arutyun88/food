@@ -7,10 +7,20 @@ import 'services_utils.dart';
 class FoodService extends GetxService {
   final GetStorage _storage = GetStorage(foodStorageName);
 
-  Future<void> save(FoodModel food) async {
+  Future<void> add(FoodModel food) async {
     final foodList = await load();
     if (foodList.contains(food)) return;
     foodList.add(food);
+    await _storage.write(
+      foodFavouritesKey,
+      foodList.map((e) => e.toJson()).toList(),
+    );
+  }
+
+  Future<void> remove(FoodModel food) async {
+    final foodList = await load();
+    if (!foodList.contains(food)) return;
+    foodList.remove(food);
     await _storage.write(
       foodFavouritesKey,
       foodList.map((e) => e.toJson()).toList(),
