@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_icons.dart';
 import '../../../../routes/app_pages.dart';
+import '../../controllers/home_controller.dart';
 import '../../entities/food_entity.dart';
 
 class FoodItemWidget extends StatelessWidget {
@@ -21,7 +22,13 @@ class FoodItemWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(Routes.DETAIL, arguments: entity);
+          Get.toNamed(Routes.DETAIL, arguments: entity)?.then(
+            (value) {
+              if (value != null) {
+                Get.find<HomeController>().changeValue(value as FoodEntity);
+              }
+            },
+          );
         },
         child: Row(
           children: [

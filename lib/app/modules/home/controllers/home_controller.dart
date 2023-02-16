@@ -23,19 +23,9 @@ class HomeController extends GetxController {
     _getFoods();
   }
 
-  Future<List<FoodModel>> getFavourites() async => await _foodService.load();
-
-  void addToFavourites() async =>
-      await _foodService.add(const FoodModel(nm: 'first'));
-
-  void removeFromFavourites() async =>
-      await _foodService.remove(const FoodModel(nm: 'first'));
-
-  void clearCache() async => await _foodService.clear();
-
   void _getFoods() async {
     final foods = await _foodProvider.getFoods();
-    final favourites = await getFavourites();
+    final favourites = await _foodService.load();
     final List<FoodModel>? remoteResult = foods.fold((l) => null, (r) => r);
     if (remoteResult != null) {
       for (final item in remoteResult) {
@@ -46,5 +36,14 @@ class HomeController extends GetxController {
         }
       }
     }
+  }
+
+  void changeValue(FoodEntity entity) {
+    entities.value = entities.map((element) {
+      if(element.food == entity.food) {
+        return entity;
+      }
+      return element;
+    }).toList();
   }
 }
