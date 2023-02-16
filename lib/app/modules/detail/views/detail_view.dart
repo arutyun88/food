@@ -6,8 +6,11 @@ import 'package:get/get.dart';
 
 import '../../../core/app_colors.dart';
 import '../../../core/texts_const.dart';
+import '../../home/entities/food_entity.dart';
 import '../controllers/detail_controller.dart';
+import '../entities/fact_type.dart';
 import 'widgets/calories_facts_widget.dart';
+import 'widgets/chart_widget.dart';
 import 'widgets/other_facts_widget.dart';
 
 class DetailView extends GetView<DetailController> {
@@ -22,9 +25,7 @@ class DetailView extends GetView<DetailController> {
         backgroundColor: AppColors.white,
         elevation: 0.0,
         leading: IconButton(
-          onPressed: () {
-            Get.back(result: controller.entity.value);
-          },
+          onPressed: () => Get.back(result: controller.entity.value),
           icon: const Icon(CupertinoIcons.left_chevron, color: AppColors.blue),
         ),
       ),
@@ -47,13 +48,7 @@ class DetailView extends GetView<DetailController> {
                           controller.entity.value.food.nm ?? '',
                           style: context.textTheme.headlineSmall,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.all(22.0),
-                          child: Placeholder(
-                            fallbackWidth: 107.0,
-                            fallbackHeight: 107.0,
-                          ),
-                        ),
+                        ChartWidget(values: _values(controller.entity.value)),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: Text(
@@ -113,4 +108,10 @@ class DetailView extends GetView<DetailController> {
       ),
     );
   }
+
+  Map<FactType, double> _values(FoodEntity entity) => {
+        FactType.protein: entity.food.prtn ?? 0.0,
+        FactType.fat: entity.food.ft ?? 0.0,
+        FactType.totalCarbs: entity.food.tcrb ?? 0.0,
+      };
 }
