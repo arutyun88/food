@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -77,7 +79,13 @@ class DetailView extends GetView<DetailController> {
                 minSize: 0.0,
                 padding: EdgeInsets.zero,
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                  margin: Platform.isAndroid
+                      ? const EdgeInsets.only(
+                          left: 30.0,
+                          right: 30.0,
+                          bottom: 30.0,
+                        )
+                      : const EdgeInsets.symmetric(horizontal: 30.0),
                   padding: const EdgeInsets.symmetric(
                     vertical: 14.0,
                     horizontal: 24.0,

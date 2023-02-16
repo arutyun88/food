@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/app_colors.dart';
 import '../controllers/home_controller.dart';
 import '../entities/food_entity.dart';
 import 'widgets/food_item_widget.dart';
@@ -14,7 +15,17 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: Obx(() => FoodListsWidget(entities: controller.entities.value)),
+        child: Obx(
+          () {
+            if (controller.entities.value.isEmpty) {
+              return const Center(
+                child: CircularProgressIndicator(color: AppColors.accent),
+              );
+            } else {
+              return FoodListsWidget(entities: controller.entities.value);
+            }
+          },
+        ),
       ),
     );
   }
