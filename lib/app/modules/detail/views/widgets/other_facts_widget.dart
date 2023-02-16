@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/app_colors.dart';
 import '../../../home/entities/food_entity.dart';
@@ -29,17 +30,11 @@ class OtherFactsWidget extends StatelessWidget {
             children: [
               Text(
                 titleByFact(FactType.sugar),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.text,
-                ),
+                style: context.textTheme.bodyLarge,
               ),
               Text(
                 getTextByValue(FactType.sugar, entity.food.sgr),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
+                style: context.textTheme.bodyLarge?.copyWith(
                   color: AppColors.grey,
                 ),
               )
@@ -58,17 +53,11 @@ class OtherFactsWidget extends StatelessWidget {
             children: [
               Text(
                 titleByFact(FactType.glycemicLoad),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.text,
-                ),
+                style: context.textTheme.bodyLarge,
               ),
               Text(
                 getTextByValue(FactType.calories, entity.food.gl),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
+                style: context.textTheme.bodyLarge?.copyWith(
                   color: AppColors.grey,
                 ),
               )

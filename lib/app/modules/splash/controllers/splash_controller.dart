@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:food/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
 
 class SplashController extends GetxController {
   final counter = 5.obs;

@@ -35,32 +35,28 @@ class DetailView extends GetView<DetailController> {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10.0),
+                      horizontal: 20.0,
+                      vertical: 10.0,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           controller.entity.value.food.nm ?? '',
-                          style: const TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.text,
-                          ),
+                          style: context.textTheme.headlineSmall,
                         ),
                         const Padding(
                           padding: EdgeInsets.all(22.0),
                           child: Placeholder(
-                              fallbackWidth: 107.0, fallbackHeight: 107.0),
+                            fallbackWidth: 107.0,
+                            fallbackHeight: 107.0,
+                          ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 8.0),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
                           child: Text(
                             nutritionFacts,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.text,
-                            ),
+                            style: context.textTheme.titleLarge,
                           ),
                         ),
                         CaloriesFactsWidget(controller.entity.value),
@@ -96,9 +92,7 @@ class DetailView extends GetView<DetailController> {
                       controller.entity.value.favourites
                           ? removeFromFavorites
                           : saveToFavorites,
-                      style: const TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w400,
+                      style: context.textTheme.titleLarge?.copyWith(
                         color: AppColors.white,
                       ),
                     ),

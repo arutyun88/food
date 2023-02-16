@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/app_colors.dart';
 import '../../../home/entities/food_entity.dart';
@@ -28,19 +29,11 @@ class CaloriesFactsWidget extends StatelessWidget {
             children: [
               Text(
                 titleByFact(FactType.calories),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.text,
-                ),
+                style: context.textTheme.bodyLarge,
               ),
               Text(
                 getTextByValue(FactType.calories, entity.food.clr),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.text,
-                ),
+                style: context.textTheme.bodyLarge,
               )
             ],
           ),
@@ -86,24 +79,10 @@ class _FactItem extends StatelessWidget {
                 height: 8,
                 width: 8,
               ),
-              Text(
-                titleByFact(type),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.text,
-                ),
-              ),
+              Text(titleByFact(type), style: context.textTheme.bodyLarge),
             ],
           ),
-          Text(
-            getTextByValue(type, value),
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w400,
-              color: AppColors.text,
-            ),
-          )
+          Text(getTextByValue(type, value), style: context.textTheme.bodyLarge)
         ],
       ),
     );

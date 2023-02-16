@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/app_colors.dart';
 
@@ -60,9 +61,7 @@ class _TabItem extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w400,
+            style: context.textTheme.bodyLarge?.copyWith(
               color: AppColors.white,
             ),
           ),

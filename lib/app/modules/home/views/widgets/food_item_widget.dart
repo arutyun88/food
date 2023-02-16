@@ -40,19 +40,15 @@ class FoodItemWidget extends StatelessWidget {
                   Text(
                     entity.food.nm ?? '',
                     maxLines: 1,
-                    style: const TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.text,
+                    style: context.textTheme.bodyLarge,
+                  ),
+                  Text(
+                    _energyValue(entity),
+                    maxLines: 1,
+                    style: context.textTheme.titleMedium?.copyWith(
+                      color: AppColors.accent,
                     ),
                   ),
-                  Text(_energyValue(entity),
-                      maxLines: 1,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.accent,
-                      )),
                 ],
               ),
             ),
