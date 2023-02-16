@@ -37,7 +37,7 @@ class ChartWidget extends StatelessWidget {
                     },
                   ),
                 ],
-                settings: const ChartGroupPieSettings(gapSweepAngle: 20.0),
+                settings: const ChartGroupPieSettings(gapSweepAngle: 15.0),
               ),
             ],
           ),

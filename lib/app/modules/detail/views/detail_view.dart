@@ -109,9 +109,17 @@ class DetailView extends GetView<DetailController> {
     );
   }
 
-  Map<FactType, double> _values(FoodEntity entity) => {
-        FactType.protein: entity.food.prtn ?? 0.0,
-        FactType.fat: entity.food.ft ?? 0.0,
-        FactType.totalCarbs: entity.food.tcrb ?? 0.0,
-      };
+  Map<FactType, double> _values(FoodEntity entity) {
+    final map = <FactType, double>{};
+    if (entity.food.prtn != null && entity.food.prtn! > 0.0) {
+      map.addEntries({FactType.protein: entity.food.prtn!}.entries);
+    }
+    if (entity.food.ft != null && entity.food.ft! > 0.0) {
+      map.addEntries({FactType.fat: entity.food.ft!}.entries);
+    }
+    if (entity.food.tcrb != null && entity.food.tcrb! > 0.0) {
+      map.addEntries({FactType.totalCarbs: entity.food.tcrb!}.entries);
+    }
+    return map;
+  }
 }
