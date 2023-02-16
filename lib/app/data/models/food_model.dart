@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'mmt_model.dart';
-
 part 'food_model.freezed.dart';
 
 part 'food_model.g.dart';
@@ -15,16 +13,9 @@ class FoodModel with _$FoodModel {
     double? tcrb,
     double? sgr,
     double? gl,
-    double? clrj,
-    double? ncrb,
-    List<String>? als,
-    String? src,
-    String? sgm,
-    String? gr,
     String? nm,
-    MmtModel? mmt,
   }) = _FoodModel;
 
-  factory FoodModel.fromJson(Map<String, Object?> json) =>
+  factory FoodModel.fromJson(Map<String, dynamic> json) =>
       _$FoodModelFromJson(json);
 }
