@@ -48,7 +48,10 @@ class DetailView extends GetView<DetailController> {
                           controller.entity.value.food.nm ?? '',
                           style: context.textTheme.headlineSmall,
                         ),
-                        ChartWidget(values: _values(controller.entity.value)),
+                        ChartWidget(
+                          values: _values(controller.entity.value),
+                          calories: controller.entity.value.food.clr ?? 0.0,
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: Text(
